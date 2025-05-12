@@ -25,7 +25,7 @@ interface PageProps {
 export default async function SearchPage({
   searchParams,
 }: PageProps) {
-  const query = searchParams.query ?? "";
+  const query = await searchParams.query ?? "";
   const products = await fetchProducts(query);
 
   if (!products.length)
