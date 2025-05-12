@@ -16,13 +16,11 @@ const fetchProducts = async (query: string): Promise<Product[]> => {
   return await client.fetch(searchQuery, { term: `*${query}*` });
 };
 
-interface PageProps {
-  searchParams: {
-    query?: string;
-  };
-}
-
-export default async function SearchPage({ searchParams }: PageProps) {
+export default async function SearchPage({
+  searchParams,
+}: {
+  searchParams: { query: string };
+}) {
   const params = await searchParams;
   const query = params.query ?? "";
   const products = await fetchProducts(query);
