@@ -1,0 +1,158 @@
+// // styles/OrderCard.module.scss
+// .orderCard {
+//   border: 1px solid #e0e0e0;
+//   border-radius: 8px;
+//   padding: 1.5rem;
+//   background: white;
+//   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+//   transition: box-shadow 0.2s ease;
+
+//   &:hover {
+//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//   }
+// }
+
+// .orderHeader {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: flex-start;
+//   margin-bottom: 1rem;
+//   padding-bottom: 1rem;
+//   border-bottom: 1px solid #f0f0f0;
+// }
+
+// .orderId {
+//   font-size: 1.1rem;
+//   color: #333;
+//   margin: 0 0 0.5rem 0;
+// }
+
+// .orderDate {
+//   font-size: 0.9rem;
+//   color: #666;
+//   margin: 0;
+// }
+
+// .orderTotal {
+//   font-size: 1.2rem;
+//   font-weight: 600;
+//   color: #222;
+// }
+
+// .orderStatus {
+//   margin-bottom: 1.5rem;
+//   font-size: 0.95rem;
+//   color: #555;
+// }
+
+// .statusBadge {
+//   display: inline-block;
+//   padding: 0.25rem 0.75rem;
+//   border-radius: 12px;
+//   font-size: 0.85rem;
+//   font-weight: 500;
+//   background-color: #f0f0f0;
+//   color: #555;
+// }
+
+// .productsList {
+//   margin-bottom: 1.5rem;
+// }
+
+// .productItem {
+//   display: flex;
+//   flex-direction: column;
+//   padding: 0.75rem 0;
+//   border-bottom: 1px solid #f8f8f8;
+
+//   &:last-child {
+//     border-bottom: none;
+//   }
+// }
+
+// .productName {
+//   font-size: 1rem;
+//   color: #0066cc;
+//   text-decoration: none;
+//   margin-bottom: 0.25rem;
+
+//   &:hover {
+//     text-decoration: underline;
+//   }
+// }
+
+// .productDetails {
+//   display: flex;
+//   justify-content: space-between;
+//   font-size: 0.9rem;
+//   color: #666;
+// }
+
+// .viewDetails {
+//   display: inline-block;
+//   padding: 0.5rem 1rem;
+//   background-color: #f0f0f0;
+//   color: #333;
+//   text-decoration: none;
+//   border-radius: 4px;
+//   font-size: 0.9rem;
+//   transition: background-color 0.2s ease;
+
+//   &:hover {
+//     background-color: #e0e0e0;
+//   }
+// }
+
+.orders {
+  padding: 50px 0;
+  font-family: 'Poppins', sans-serif;
+
+  &__title {
+    font-size: 32px;
+    font-weight: 600;
+    color: #1c7430;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  &__card {
+    background: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    padding: 25px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+  }
+
+  &__header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-size: 15px;
+    margin-bottom: 20px;
+    color: #555;
+
+    span {
+      margin-right: 15px;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__items {
+    list-style: disc;
+    padding-left: 20px;
+
+    li {
+      margin-bottom: 8px;
+      font-size: 15px;
+      color: #333;
+    }
+  }
+
+  &__empty {
+    text-align: center;
+    font-size: 16px;
+    color: #999;
+    margin-top: 40px;
+  }
+}
