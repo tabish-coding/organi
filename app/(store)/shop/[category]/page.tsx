@@ -10,7 +10,8 @@ export default async function page({
 }: {
   params: { category: string };
 }) {
-  const category = params.category;
+  const param = await params
+  const category = param.category;
 
   const query = groq`*[_type == "product" && references(*[_type == "category" && slug.current == $categorySlug]._id)]{
     _id,

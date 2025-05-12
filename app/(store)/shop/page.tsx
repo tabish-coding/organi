@@ -12,7 +12,8 @@ export default async function page({
 }: {
   searchParams: { [key: string]: string };
 }) {
-  const page = parseInt(await searchParams.page) || 1;
+  const params = await searchParams;
+  const page = parseInt(await params.page) || 1;
   const start = (page - 1) * PRODUCTS_PER_PAGE;
   const end = start + PRODUCTS_PER_PAGE;
 

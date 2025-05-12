@@ -10,7 +10,8 @@ export default async function ProductRoute({
 }: {
   params: { product: string };
 }) {
-  const productSlug = await params.product;
+  const param = await params
+  const productSlug = param.product;
   const product = await client.fetch(
     groq`*[_type == "product" && slug.current == $slug][0] {
     _id,

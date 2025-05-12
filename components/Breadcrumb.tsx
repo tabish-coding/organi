@@ -15,8 +15,6 @@ type BreadcrumbProps = {
 
 export default async function Breadcrumb({ items, title }: BreadcrumbProps) {
   const image = await client.fetch(`*[_type == "siteSettings"][0]{bannerImageSecondary}`);
-  console.log(image);
-  
 
   return (
     <section
