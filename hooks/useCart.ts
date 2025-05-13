@@ -89,15 +89,6 @@ export const useCart = (): UseCartReturn => {
     window.localStorage.setItem("cartTrigger", Date.now().toString());
   }, []);
 
-  const getProductSlugs = () => {
-    const productSlugs = cart.map((item) => item.slug);
-    if (productSlugs.length === 0) {
-      return [];
-    } else {
-      return productSlugs;
-    }
-  };
-
   return {
     cart,
     total,
@@ -107,6 +98,5 @@ export const useCart = (): UseCartReturn => {
     updateItemQuantity,
     clearCart,
     isLoading,
-    getProductSlugs,
   };
 };

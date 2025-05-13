@@ -1,51 +1,9 @@
-// // app/(protected)/orders/page.tsx
 import { currentUser } from "@clerk/nextjs/server";
 import { client } from "@/sanity/lib/client";
-// import OrderCard from "@/components/OrderCard";
-import { Order, Product } from "@/sanity.types";
+import { Order } from "@/sanity.types";
 import Link from "next/link";
 import { urlFor } from "@/sanity/lib/image";
 import Breadcrumb from "@/components/Breadcrumb";
-
-// export default async function OrdersPage() {
-//   const user = await currentUser();
-
-//   if (!user) {
-//     return <div className="error">You must be logged in to view orders</div>;
-//   }
-
-//   const orders = await client.fetch(
-//     `*[_type == "order" && userId == $userId] | order(createdAt desc) {
-//       _id,
-//       createdAt,
-//       total,
-//       products[] {
-//         name,
-//         price,
-//         quantity,
-//         slug
-//       },
-//       status
-//     }`,
-//     { userId: user.id }
-//   );
-
-//   return (
-//     <div className="ordersContainer">
-//       <h1 className="pageTitle">Your Orders</h1>
-
-//       {orders.length === 0 ? (
-//         <div className="emptyMessage">You haven't placed any orders yet.</div>
-//       ) : (
-//         <div className="ordersList">
-//           {orders.map((order: Order) => (
-//             <OrderCard key={order._id} order={order} />
-//           ))}
-//         </div>
-//       )}
-//     </div>
-//   );
-// }
 
 export default async function OrdersPage() {
   const user = await currentUser();

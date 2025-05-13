@@ -1,36 +1,39 @@
+"use client";
+
 import ProductItem from "@/components/ui/ProductItem";
 import { Product } from "@/sanity.types";
 import { client } from "@/sanity/lib/client";
 import { groq } from "next-sanity";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
-const fetchProducts = async (query: string): Promise<Product[]> => {
-  const searchQuery = groq`
-    *[_type == "product" && title match $term]{
-      _id,
-      title,
-      price,
-      mainImage,
-      "slug": slug.current,
-    }
-  `;
-  return await client.fetch(searchQuery, { term: `*${query}*` });
-};
+export default function SearchPage() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const searchParams = useSearchParams();
+  const query = searchParams.get("query");
 
-export default async function SearchPage({
-  searchParams,
-}: {
-  searchParams: { query: string };
-}) {
-  const params = await searchParams;
-  const query = params.query ?? "";
-  const products = await fetchProducts(query);
+  if (!query) {
+    return <div>No query</div>;
+  }
 
-  if (!products.length)
-    return (
-      <div className="container" style={{ margin: "30px auto 50px auto" }}>
-        <p>No products found for: ${query}</p>
-      </div>
-    );
+  const fetchProducts = async (query: string): Promise<Product[]> => {
+    const searchQuery = groq`
+      *[_type == "product" && title match $term]{
+        _id,
+        title,
+        price,
+        mainImage,
+        "slug": slug.current,
+      }
+    `;
+    return await client.fetch(searchQuery, { term: query });
+  };
+
+  useEffect(() => {
+    fetchProducts(query).then((products) => {
+      setProducts(products);
+    });
+  }, [query]);
 
   return (
     <div className="container" style={{ margin: "100px auto" }}>

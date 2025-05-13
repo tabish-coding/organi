@@ -8,10 +8,11 @@ import { groq } from "next-sanity";
 export default async function ProductRoute({
   params,
 }: {
-  params: { product: string };
+  params: Promise<{
+    product: string;
+  }>;
 }) {
-  const param = await params
-  const productSlug = param.product;
+  const productSlug = (await params).product;
   const product = await client.fetch(
     groq`*[_type == "product" && slug.current == $slug][0] {
     _id,

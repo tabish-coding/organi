@@ -5,16 +5,14 @@ import ProductItem from "@/components/ui/ProductItem";
 import { Product } from "@/sanity.types";
 import { client } from "@/sanity/lib/client";
 
-export const PRODUCTS_PER_PAGE = 12;
-
 export default async function page({
   searchParams,
 }: {
-  searchParams: { [key: string]: string };
+  searchParams: Promise<{ page?: string }>;
 }) {
-  const params = await searchParams;
-  const page = parseInt(await params.page) || 1;
-  const start = (page - 1) * PRODUCTS_PER_PAGE;
+  const PRODUCTS_PER_PAGE = 12;
+  const { page = "1" } = await searchParams;
+  const start = (parseInt(page) - 1) * PRODUCTS_PER_PAGE;
   const end = start + PRODUCTS_PER_PAGE;
 
   const products = await client.fetch(
@@ -48,7 +46,7 @@ export default async function page({
           </div>
 
           <PaginationControls
-            currentPage={page}
+            currentPage={parseInt(page)}
             totalItems={totalPosts}
             itemsPerPage={PRODUCTS_PER_PAGE}
           />

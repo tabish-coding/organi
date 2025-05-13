@@ -1,3 +1,5 @@
+"use client";
+
 import Breadcrumb from "@/components/Breadcrumb";
 import ShopWrapper from "@/components/ShopWrapper";
 import ProductItem from "@/components/ui/ProductItem";
@@ -8,10 +10,9 @@ import { groq } from "next-sanity";
 export default async function page({
   params,
 }: {
-  params: { category: string };
+  params: Promise<{ category: string }>;
 }) {
-  const param = await params
-  const category = param.category;
+  const category = (await params).category;
 
   const query = groq`*[_type == "product" && references(*[_type == "category" && slug.current == $categorySlug]._id)]{
     _id,
