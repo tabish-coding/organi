@@ -7,6 +7,7 @@ import { client } from "@/sanity/lib/client";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-tooltip/dist/react-tooltip.css";
 import "@/sass/style.scss";
+import "./globals.css"
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/grid";

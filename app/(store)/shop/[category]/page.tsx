@@ -1,5 +1,3 @@
-"use client";
-
 import Breadcrumb from "@/components/Breadcrumb";
 import ShopWrapper from "@/components/ShopWrapper";
 import ProductItem from "@/components/ui/ProductItem";

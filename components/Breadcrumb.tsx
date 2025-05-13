@@ -1,7 +1,9 @@
-// components/Breadcrumb.tsx
+"use client";
+
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 type BreadcrumbItem = {
   name: string;
@@ -13,13 +15,26 @@ type BreadcrumbProps = {
   title: string;
 };
 
-export default async function Breadcrumb({ items, title }: BreadcrumbProps) {
-  const image = await client.fetch(`*[_type == "siteSettings"][0]{bannerImageSecondary}`);
+export default function Breadcrumb({ items, title }: BreadcrumbProps) {
+  const [breadcrumbImage, setBreadcrumbImage] = useState<string | null>(null);
+
+  const fetchchImage = async () => {
+    const image = await client.fetch(
+      `*[_type == "siteSettings"][0]{bannerImageSecondary}`
+    );
+    setBreadcrumbImage(urlFor(image.bannerImageSecondary).height(150).url());
+  };
+
+  useEffect(() => {
+    fetchchImage();
+  }, []);
 
   return (
     <section
       className="breadcrumb-section set-bg"
-      style={{ backgroundImage: `url(${urlFor(image.bannerImageSecondary).height(150).url()})` }}
+      style={{
+        backgroundImage: `url(${breadcrumbImage})`,
+      }}
     >
       <div className="container">
         <div className="row">
